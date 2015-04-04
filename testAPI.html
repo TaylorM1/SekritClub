@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+
+        <script>
+          Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
+            Twitch.api({method: '/streams/joel'}, function(error, list) {
+              console.debug(list);
+            });
+          });
+        </script>
+    </body>
+</html>

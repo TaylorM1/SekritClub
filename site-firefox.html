@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Sekrit Club</title>
+	<link rel="stylesheet" type="text/css" title="default" href="./default-firefox.css">
+	<link rel="alternate stylesheet" type="text/css" title="orange" href="./orange.css">
+	<link rel="icon" 
+	      type="image/png" 
+	      href="./favicon.png">
+</head>
+<body onload=set_style_from_cookie()>
+
+<!-- <nav class="menu slide-menu-left">
+    <ul>
+        <li><button class="close-menu">&larr; Close</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Rellow">Rellow</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="BrutalEarthworm">BrutalEarthworm</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="JuniorTerra">JuniorTerra</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Thilink">Thilink</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Handythehanser">Handythehanser</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="3xfighter">3xfighter</button></li>
+        <li><h2 class="streamerListText">Vinesauce</h2></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Vinny">Vinny</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Limes">Limes</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Direboar">Direboar</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Joel">Joel</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="KY">KY</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Hootey">Hootey</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Darren">Darren</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="RevScarecrow">RevScarecrow</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Imakuni">Imakuni</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Fred">Fred</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="FearGingers">FearGingers</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="MentalJen">MentalJen</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="StudyGuy">StudyGuy</button></li>
+        <li><h2 class="streamerListText">Others</h2></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="SyncVideo">SyncVideo</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="DistantKingdom">DistantKingdom</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="AdaptChance">AdaptChance</button></li>
+        <li><button class="streamerButton" onclick="instantEmbed(this)" value="Mang0">Mang0</button></li>
+    </ul>
+</nav><!-- /slide menu left -->
+
+<!-- <nav class="menu slide-menu-bottom">
+    <ul>
+        <li><button class="close-menu">Close &darr;</button></li>
+        <li><a href=http://steamcommunity.com/groups/Sekritclub target="_blank">
+			 <img src="./steam.png">
+		 </a></li>
+        <li><a href=http://tsc.booru.org target="_blank">
+            <img src="./booru.png"/></a></li>
+        <li><a href=./chatonly.html target="_blank">
+			 <img src="./chatonly.png"/>
+		 </a></li>
+    </ul>
+</nav><!-- /slide menu bottom -->
+	 
+     <div id="streamerList">
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Rellow" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="BrutalEarthworm" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="JuniorTerra" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Thilink" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Handythehanser" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="3xfighter" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="SyncVideo" />
+         <p class="streamerListText">Vinesauce</p>
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Vinny" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Limes" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Direboar" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Joel" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="KY" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Hootey" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Darren" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="RevScarecrow" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Imakuni" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Fred" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="FearGingers" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="MentalJen" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="StudyGuy" />
+         <p class="streamerListText">Others</p>
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Nintendo" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="DistantKingdom" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="AdaptChance" />
+         <input type="submit" class="streamerButton" onclick="instantEmbed(this)" value="Mang0" />
+	 </div>
+	
+  <div id="restOfSite">
+	<section id="streamChat">
+		<div width="75%" id="playerContainer">
+			<iframe width="100%" height="100%" id="stream-embed" src="./nostream.html"></iframe>
+		</div>
+		<div width="25%" id="chatContainer">
+			<iframe name="flash" width="100%" height="100%" id="chatango-embed" src="./chats/default/chatroom.html"></iframe>
+		</div>
+	</section>
+	
+	<div id="user-options" style="height:3%">
+		<input type="text" id="embedURL" value="Enter Stream Embed URL Here!" style="margin-left:5px"/>
+	  
+		 <input type="submit" value="Submit" id="submitButton"/> 
+		 <input type="submit" value="Easy Twitch Embed" id="easyTwitchEmbed"/>
+		 <input type="submit" id="chatSwap" value="Flash/HTML5 Chatango Toggle"/>
+		 
+		 <input type="submit" id="IRC" value="IRC"/>
+		 
+		 <input type="submit" id="showStreamerList" value="Toggle Streamer List"/>
+		 
+		 <input type="submit" id="linksButton" value="Links"/>
+		 
+		 <input type="range" min="25" max="100" value="75" onchange="changeWidth(this.value)"/>
+		 <select id="styleSwap" name="default" onchange="style_swap()">
+		 	 <option value="default">Blue</option>
+			 <option value="orange">Orange</option>
+		 </select>
+		 
+	 </div>
+	 
+	 <div id="links">
+		 <a href=http://steamcommunity.com/groups/Sekritclub target="_blank">
+			 <img src="./steam.png">
+		 </a>
+		 <a href=http://tsc.booru.org target="_blank">
+			 <img src="./booru.png"/>
+		 </a>
+		 <a href=./chatonly.html target="_blank">
+			 <img src="./chatonly.png"/>
+		 </a>
+	 </div>
+ </div>
+<script type ="text/javascript" src="scripts.js"></script>
+
+</body>
+</html>
