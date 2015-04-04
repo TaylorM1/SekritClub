@@ -94,23 +94,25 @@ function reloadChat(){
     }
 }
 
-//A bunch of snippets assigned to buttons and such
-
-//Erases the default text in the embed URL box once its clicked on, and also takes the value of what is in the text box and enters it into the playerContainer when Enter is pressed
-document.getElementById('embedURL').onkeydown = function() {
-    if (event.keyCode == 13){
-        document.getElementById('stream-embed').src = document.getElementById('embedURL').value;
-    }
-}
-
-//Submits the URL in the embed URL box and enters it into the player container
-document.getElementById("submitButton").onclick = function() {
+function changeEmbed(){
     if(document.getElementById('embedURL').value === "" || document.getElementById('embedURL').value === " "){
         document.getElementById('stream-embed').src = './nostream.html';
     }else{
         document.getElementById('stream-embed').src = document.getElementById('embedURL').value;
     }
 }
+
+//A bunch of snippets assigned to buttons and such
+
+//Takes the value of what is in the text box and enters it into the playerContainer when Enter is pressed
+document.getElementById('embedURL').onkeydown = function() {
+    if (event.keyCode == 13){
+        changeEmbed();
+    }
+}
+
+//Submits the URL in the embed URL box and enters it into the player container
+document.getElementById("submitButton").onclick = changeEmbed();
 
 //Inserts a template URL into the embed URL box so the user can quickly and easily enter a twitch streamer's channel name to embed them
 document.getElementById("easyTwitchEmbed").onclick = function() {
