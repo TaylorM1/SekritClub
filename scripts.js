@@ -60,7 +60,7 @@ function getStreamerStatus(apimeth, curStreamer){
 }
 
 function checkStreamerStatus(){
-    console.log("Yep, we runnin.");
+    console.log("Checking streamer statuses...");
     var apiMethod, currentStreamer;
     Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
         for(i = 0; i < streamerURLs.length; i++){
@@ -105,7 +105,11 @@ document.getElementById('embedURL').onkeydown = function() {
 
 //Submits the URL in the embed URL box and enters it into the player container
 document.getElementById("submitButton").onclick = function() {
-    document.getElementById('stream-embed').src = document.getElementById('embedURL').value;
+    if(document.getElementById('embedURL').value === "" || document.getElementById('embedURL').value === " "){
+        document.getElementById('stream-embed').src = './nostream.html';
+    }else{
+        document.getElementById('stream-embed').src = document.getElementById('embedURL').value;
+    }
 }
 
 //Inserts a template URL into the embed URL box so the user can quickly and easily enter a twitch streamer's channel name to embed them
@@ -129,6 +133,7 @@ document.getElementById('chatSwap').onclick = function() {
     }
 }
 
+/** Deprecated streamer list and links menu code
 //Shows and hides the streamer list when the "showStreamerList" button is clicked
 document.getElementById('showStreamerList').onclick = function() {
     if (document.getElementById('streamerList').style.visibility == 'hidden') {
@@ -155,4 +160,4 @@ document.getElementById('linksButton').onclick = function() {
          document.getElementById('links').style.visibility = 'hidden';
      }
 }
-
+**/
