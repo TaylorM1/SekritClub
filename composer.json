@@ -1,0 +1,4 @@
+heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php
+echo '{}' > composer.json
+git add .
+git commit -am "add composer.json for PHP app detection"
