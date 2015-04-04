@@ -136,6 +136,7 @@ input[type=submit]:active {
 
 .streamerStatus {
     color: #666;
+    text-shadow: none;
 }
 
 .streamerStatusACTIVE {
@@ -146,6 +147,7 @@ input[type=submit]:active {
 .streamerListText {
     display: block;
     font-weight: bold;
+    font-family: sans-serif;
     text-align: center;
     color: #042e5c;
     font-size: 18px;
