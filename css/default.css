@@ -402,3 +402,15 @@ body.pmt-open #wrapper {
 body.pmb-open #wrapper {
     top: -100px
 }
+.jspTrack{
+    background: #042F5E;
+}
+
+.jspDrag{
+    background: #3984d8;
+}
+
+.jspActive{
+    background: #9bc3f0;
+    box-shadow: 0px 0px 5px #9bc3f0;
+}

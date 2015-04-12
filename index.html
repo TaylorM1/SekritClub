@@ -2,12 +2,19 @@
 <html>
 <head>
 	<title>The Sekrit Club</title>
-	<link rel="stylesheet" type="text/css" title="default" href="./default.css">
-	<link rel="alternate stylesheet" type="text/css" title="orange" href="./orange.css">
+    <link rel="stylesheet" href="css/jquery.jscrollpane.css">
+	<link rel="stylesheet" type="text/css" title="default" href="css/default.css">
+	<link rel="alternate stylesheet" type="text/css" title="orange" href="css/orange.css">
 	<link rel="icon" 
 	      type="image/png" 
 	      href="./favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/mwheelIntent.js"></script>
+    <script src="js/jquery.jscrollpane.min.js"></script>
     <script src="cookie.js"></script>
+    
    
 </head>
 <body onload=set_style_from_cookie()>
@@ -152,7 +159,7 @@
 	<div id="user-options">
 		<input type="text" id="embedURL" placeholder="Enter Stream Embed URL Here!"/>
 	  
-		 <input type="submit" value="Submit" id="submitButton"/> 
+		 <input type="submit" value="Submit" id="submitButton" onclick="changeEmbed()"/> 
 		 <input type="submit" value="Easy Twitch Embed" id="easyTwitchEmbed"/>
 		 <input type="submit" id="chatSwap" value="Flash/HTML5 Chatango Toggle"/>
 		 
@@ -183,10 +190,8 @@
 		 </a>
 	 </div> -->
  </div>
- <script src="classie.js"></script>
-    <script src="nav.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

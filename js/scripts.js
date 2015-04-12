@@ -4,6 +4,8 @@ $(document).ready(function(){
         checkStreamerStatus();
         $('ul').fadeTo('slow', 1);
     });
+    
+    $('.slide-menu-left').jScrollPane();
 });
 
 //Setting up a multidimensional array of streamers and the corresponding url for use later.
@@ -103,6 +105,10 @@ function changeEmbed(){
     }
 }
 
+function changeEmbedd(){
+    console.log("Is this working?");
+}
+
 //A bunch of snippets assigned to buttons and such
 
 //Takes the value of what is in the text box and enters it into the playerContainer when Enter is pressed
@@ -111,9 +117,6 @@ document.getElementById('embedURL').onkeydown = function() {
         changeEmbed();
     }
 }
-
-//Submits the URL in the embed URL box and enters it into the player container
-document.getElementById("submitButton").onclick = changeEmbed();
 
 //Inserts a template URL into the embed URL box so the user can quickly and easily enter a twitch streamer's channel name to embed them
 document.getElementById("easyTwitchEmbed").onclick = function() {
