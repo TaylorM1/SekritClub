@@ -105,10 +105,6 @@ function changeEmbed(){
     }
 }
 
-function changeEmbedd(){
-    console.log("Is this working?");
-}
-
 //A bunch of snippets assigned to buttons and such
 
 //Takes the value of what is in the text box and enters it into the playerContainer when Enter is pressed
