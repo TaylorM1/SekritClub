@@ -21,7 +21,7 @@
             <p><span id="letterS">Sekrit</span><span id="letterC">Club</span></p>
         </div>
         <div class="motdBox">
-            <p class="motdText"><span class="messageBoard1">Message</span> <span class="messageBoard2">Board</span> </br></br><?php echo $motd ?></p>
+            <p class="motdText"><span class="messageBoard1">Message</span> <span class="messageBoard2">Board</span> </br></br><?php echo nl2br($motd); ?></p>
             <form method="post" class="motdForm">
                 <label class="motdLabel">Edit MOTD: </label>
                 <textarea name="newMOTD" placeholder="Enter new MOTD here..."><?php echo $motd ?></textarea>
