@@ -432,6 +432,7 @@ body.pmb-open #wrapper {
 /* nostream.php */
 .noStream{
     background: #042e5c;
+    overflow: scroll;
 }
 #scContainer{
     width: 100%;
@@ -475,6 +476,7 @@ body.pmb-open #wrapper {
     width: 70%;
     background: #0b53a3;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .messageBoard2{
@@ -507,6 +509,8 @@ body.pmb-open #wrapper {
     padding: 5px 10px;
     border-radius: 10px;
     font-family: sans-serif;
+    max-height: 300px;
+    overflow: scroll;
 }
 
 .motdForm{
