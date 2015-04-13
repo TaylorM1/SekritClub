@@ -46,7 +46,7 @@ function instantEmbed(caller) {
             return;
         }
     }
-    document.getElementById('stream-embed').src = './nostream.html';
+    document.getElementById('stream-embed').src = './nostream.php';
     document.getElementById('embedURL').value = 'Something messed up. Go yell at Rellow until he fixes it.';
     return;
 }
@@ -99,7 +99,7 @@ function reloadChat(){
 
 function changeEmbed(){
     if(document.getElementById('embedURL').value === "" || document.getElementById('embedURL').value === " "){
-        document.getElementById('stream-embed').src = './nostream.html';
+        document.getElementById('stream-embed').src = './nostream.php';
     }else{
         document.getElementById('stream-embed').src = document.getElementById('embedURL').value;
     }

@@ -428,3 +428,115 @@ body.pmb-open #wrapper {
     background: #9bc3f0;
     box-shadow: 0px 0px 5px #9bc3f0;
 }
+
+/* nostream.php */
+.noStream{
+    background: #042e5c;
+}
+#scContainer{
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+#letterS{
+    margin: 0;
+    display: inline-block;
+    font-family: sans-serif;   
+    font-size: 10vw;
+    font-weight: 500;   
+    color: #0D6AD1;
+    font-style: italic;
+    text-decoration: none;   
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 10px black;     
+}
+#letterC{
+    margin: 0;
+    display: inline-block;
+    font-family: sans-serif;   
+    font-size: 10vw;
+    font-weight: 500;   
+    color: #fff;
+    font-style: italic;
+    text-decoration: none;   
+    text-shadow: -1px -1px 0 #0D6AD1, 1px -1px 0 #0D6AD1, -1px 1px 0 #0D6AD1, 1px 1px 0 #0D6AD1, 3px 3px 10px black;
+}
+
+.motdBox{
+    margin: 0 auto;
+    box-sizing: content-box;
+    padding: 10px;
+    width: 70%;
+    background: #0b53a3;
+    border-radius: 10px;
+}
+
+.messageBoard2{
+    margin: 0;
+    display: inline-block;
+    font-family: sans-serif;   
+    font-size: 5vw;
+    font-weight: 500;   
+    color: #0D6AD1;
+    font-style: italic;
+    text-decoration: none;   
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 10px black;     
+}
+.messageBoard1{
+    margin: 0;
+    display: inline-block;
+    font-family: sans-serif;   
+    font-size: 5vw;
+    font-weight: 500;   
+    color: #fff;
+    font-style: italic;
+    text-decoration: none;   
+    text-shadow: -1px -1px 0 #0D6AD1, 1px -1px 0 #0D6AD1, -1px 1px 0 #0D6AD1, 1px 1px 0 #0D6AD1, 3px 3px 10px black;
+}
+
+.motdText{
+    color: #fff;
+    text-align: center;
+    background: #2C2C2C;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+
+.motdForm{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    height: auto;
+    min-height: 200px;
+    font-family: sans-serif;
+}
+
+.motdLabel{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.motdBox textarea{
+    display: block;
+    box-sizing: content-box;
+    min-height: 100px;
+    padding: 10px;
+    background: #2C2C2C;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    resize: none;
+    width: 100%;
+}
+
+.motdSubmit{
+    margin-top: 10px;
+    float: right;
+}
