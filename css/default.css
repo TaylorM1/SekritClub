@@ -488,7 +488,14 @@ body.pmb-open #wrapper {
     color: #0D6AD1;
     font-style: italic;
     text-decoration: none;   
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 10px black;     
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 10px black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 .messageBoard1{
     margin: 0;
@@ -500,6 +507,13 @@ body.pmb-open #wrapper {
     font-style: italic;
     text-decoration: none;   
     text-shadow: -1px -1px 0 #0D6AD1, 1px -1px 0 #0D6AD1, -1px 1px 0 #0D6AD1, 1px 1px 0 #0D6AD1, 3px 3px 10px black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 .motdText{

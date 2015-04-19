@@ -1,21 +1,13 @@
-$(document).ready(function(){
-    $('.refresh').click(function(){
-        $('ul').fadeTo('slow', 0);
-        checkStreamerStatus();
-        $('ul').fadeTo('slow', 1);
-    });
-    
-    $('.slide-menu-left').jScrollPane();
-});
-
 //Setting up a multidimensional array of streamers and the corresponding url for use later.
 var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['BrutalEarthworm', 'http://hitbox.tv/embed/Brutal-Earthworm', 'non-twitch'],
     ['JuniorTerra', 'http://hitbox.tv/embed/juniorterra', 'non-twitch'], 
-    ['Thilink', 'http://hitbox.tv/embed/thilink', 'non-twitch'], 
+    ['Thilink', 'http://hitbox.tv/embed/thilink', 'non-twitch'],
+    ['Thilink (Twitch)', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=thilink&autoplay=1', 'thilink'],
     ['Handythehanser', 'http://hitbox.tv/embed/Handythehanser', 'non-twitch'],
     ['3xfighter', 'https://www.picarto.tv/live/playerpopout.php?popit=3xfighter&off=1&token=0', 'non-twitch'],
     ['BlazinRaisins', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=blazin_raisins&autoplay=1', 'blazin_raisins'],
+    ['TripleSevens', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=triplesevens&autoplay=1', 'triplesevens'],
     ['Vinny', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=vinesauce&autoplay=1', 'vinesauce'], 
     ['Limes', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=limealicious&autoplay=1', 'limealicious'], 
     ['Direboar', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=direboar&autoplay=1', 'direboar'], 
@@ -32,7 +24,40 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['SyncVideo', 'http://sync-video.com/r/rUdw3g4l', 'non-twitch'],
     ['DistantKingdom', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=distantkingdom&autoplay=1', 'distantkingdom'],
     ['AdaptChance', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=adaptchance&autoplay=1', 'adaptchance'],
-    ['Mang0', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mang0&autoplay=1', 'mang0']];
+    ['Mang0', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mang0&autoplay=1', 'mang0'],
+    ["Vinny's Mike", 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=m6000w&autoplay=1', 'm6000w'],
+    ['Bro Team Pill', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=broteam&autoplay=1', 'broteam'],
+    ['Lab Zero', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=labzero&autoplay=1', 'labzero'],
+    ['Mega 64', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mega64podcast&autoplay=1', 'mega64podcast']];
+
+var streamerlistitem;
+
+$(document).ready(function(){
+    $('.refresh').click(function(){
+        $('ul').fadeTo('slow', 0);
+        checkStreamerStatus();
+        $('ul').fadeTo('slow', 1);
+    });
+    
+    for (i = 0; i < streamerURLs.length; i++){
+        if(i === 0) $('.streamerList').append('<li><h2 class="streamerListText">Sekrit Club</h2></li>');
+        if(streamerURLs[i][0] === "Vinny") $('.streamerList').append('<li><h2 class="streamerListText">Vinesauce</h2></li>');
+        if(streamerURLs[i][0] === "SyncVideo") $('.streamerList').append('<li><h2 class="streamerListText">Others</h2></li>');
+        streamerlistitem = '<li><button class="streamerButton" onclick="instantEmbed(this)" value="' + streamerURLs[i][0] + '">' + streamerURLs[i][0];
+        if(streamerURLs[i][2] !== 'non-twitch'){
+            streamerlistitem += '</br><span class="streamerStatus" id="' + streamerURLs[i][0] + '">Offline</span>';
+        }
+        
+        streamerlistitem += '</button></li>'
+        $('.streamerList').append(streamerlistitem);
+    }
+    
+    $('.slide-menu-left').jScrollPane();
+});
+
+
+
+
 var streamStatuses = document.querySelectorAll('.streamerStatus');
 
 //Switches the current embed to the corresponding URL of the streamer name the user clicked.
