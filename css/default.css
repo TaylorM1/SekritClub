@@ -1,3 +1,7 @@
+* {
+    font-family: sans-serif;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -212,6 +216,51 @@ input[type='range']::-moz-range-thumb {
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
 }
+
+.hidden{
+    display: none;
+}
+
+.notifications {
+    box-sizing: content-box;
+    padding: 10px;
+    padding-left: 30px;
+    z-index: 9999;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    min-width: 200px;
+    width: auto;
+    height: auto;
+    background: rgba(13, 106, 209, 0.8);
+    box-shadow: 0 0 5px rgba(13, 106, 209, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.notificationsX {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #042e5c;
+}
+
+.notifications > ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 14px;
+}
+
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|
 |* Menus

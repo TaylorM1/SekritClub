@@ -3,7 +3,7 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['BrutalEarthworm', 'http://hitbox.tv/embed/Brutal-Earthworm', 'non-twitch'],
     ['JuniorTerra', 'http://hitbox.tv/embed/juniorterra', 'non-twitch'], 
     ['Thilink', 'http://hitbox.tv/embed/thilink', 'non-twitch'],
-    ['Thilink (Twitch)', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=thilink&autoplay=1', 'thilink'],
+    ['Thilink on Twitch', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=thilink&autoplay=1', 'thilink'],
     ['Handythehanser', 'http://hitbox.tv/embed/Handythehanser', 'non-twitch'],
     ['3xfighter', 'https://www.picarto.tv/live/playerpopout.php?popit=3xfighter&off=1&token=0', 'non-twitch'],
     ['BlazinRaisins', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=blazin_raisins&autoplay=1', 'blazin_raisins'],
@@ -31,13 +31,13 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['Mega 64', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mega64podcast&autoplay=1', 'mega64podcast']];
 
 var streamerlistitem;
+var goneOnline = [];
 
 $(document).ready(function(){
     $('.refresh').click(function(){
         checkStreamerStatus()
     });
-    
-    setInterval(checkStreamerStatus, 120000);
+    $('.notificationsX').click(hideNotifications);
     
     for (i = 0; i < streamerURLs.length; i++){
         if(i === 0) $('.streamerList').append('<li><h2 class="streamerListText">Sekrit Club</h2></li>');
@@ -45,20 +45,39 @@ $(document).ready(function(){
         if(streamerURLs[i][0] === "SyncVideo") $('.streamerList').append('<li><h2 class="streamerListText">Others</h2></li>');
         streamerlistitem = '<li><button class="streamerButton" onclick="instantEmbed(this)" value="' + streamerURLs[i][0] + '">' + streamerURLs[i][0];
         if(streamerURLs[i][2] !== 'non-twitch'){
-            streamerlistitem += '</br><span class="streamerStatus" id="' + streamerURLs[i][0] + '">Offline</span>';
+            streamerlistitem += '</br><span class="streamerStatus" id="' + streamerURLs[i][0].replace(/\s|['"]|/g, "") + '">Offline</span>';
         }
         
         streamerlistitem += '</button></li>'
         $('.streamerList').append(streamerlistitem);
     }
     
+    setInterval(checkStreamerStatus, 120000);
+
     $('.slide-menu-left').jScrollPane();
 });
 
-
-
-
 var streamStatuses = document.querySelectorAll('.streamerStatus');
+
+function showNotifications(){
+    $('.notifications').fadeIn('slow');
+    $('.notifications').toggleClass('hidden');
+    $('.notificationListElement').remove();
+    for(i = 0; i < goneOnline.length; i++){
+        console.log('is this even doing anything');
+        $('.notificationsList').append('<li class="notificationListElement">'+goneOnline[i]+ ' is now online!' + '</li>');
+    }
+    setTimeout(hideNotifications, 10000);
+}
+
+function hideNotifications(){
+    $('.notifications').fadeOut('slow');
+    $('.notifications').toggleClass('hidden');
+}
+
+function updateGoneOnline(currentStreamer){
+    goneOnline.push(currentStreamer);
+}
 
 //Switches the current embed to the corresponding URL of the streamer name the user clicked.
 function instantEmbed(caller) {
@@ -76,13 +95,15 @@ function instantEmbed(caller) {
     return;
 }
 
-function getStreamerStatus(apimeth, curStreamer){
+function getStreamerStatus(apimeth, currentStreamer){
     Twitch.api({method: apimeth}, function(error, list) {
                     if(list.stream != null){
-                        document.getElementById(curStreamer).textContent = 'Online';
-                        document.getElementById(curStreamer).className = 'streamerStatusACTIVE';
+                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).textContent = 'Online';
+                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
+                        updateGoneOnline(currentStreamer);
+                        showNotifications();
                     }else{
-                        document.getElementById(curStreamer).className = 'streamerStatus';
+                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
                     }
                 });
 }
@@ -91,7 +112,9 @@ function checkStreamerStatus(){
     console.log("Checking streamer statuses...");
     $('.streamerList').fadeTo('fast', 0);
     var apiMethod, currentStreamer;
+    
     Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
+        goneOnline = [];
         for(i = 0; i < streamerURLs.length; i++){
             currentStreamer = streamerURLs[i][0];
             if(streamerURLs[i][2] != 'non-twitch'){
@@ -100,7 +123,6 @@ function checkStreamerStatus(){
             }
         }
     });
-    
     $('.streamerList').fadeTo('slow', 1);
 }
 checkStreamerStatus();
