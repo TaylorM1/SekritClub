@@ -128,8 +128,9 @@ function instantEmbed(caller) {
 function getStreamerStatus(apimeth, currentStreamer){
     Twitch.api({method: apimeth}, function(error, list) {
                     if(list.stream != null){
-                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).textContent = 'Online';
+                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).innerHTML = 'Online<br>' + '<span class="streamerStatusGame">'+list.stream.game+'</span>';
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
+                        console.log(list.stream.game);
                         updateGoneOnline(currentStreamer, 1);
                     }else{
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';

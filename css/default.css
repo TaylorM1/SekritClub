@@ -157,6 +157,11 @@ input[type=submit]:active {
     text-shadow: 0 0 1px #66c966;
 }
 
+.streamerStatusGame {
+    color: #9bc3f0;
+    text-shadow: none;
+}
+
 .streamerListText {
     display: block;
     font-weight: bold;
