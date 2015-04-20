@@ -55,19 +55,32 @@ $(document).ready(function(){
     setInterval(checkStreamerStatus, 120000);
 
     $('.slide-menu-left').jScrollPane();
+    checkStreamerStatus();
 });
 
 var streamStatuses = document.querySelectorAll('.streamerStatus');
 
 function showNotifications(){
-    $('.notifications').fadeIn('slow');
-    $('.notifications').toggleClass('hidden');
-    $('.notificationListElement').remove();
-    for(i = 0; i < goneOnline.length; i++){
-        console.log('is this even doing anything');
-        $('.notificationsList').append('<li class="notificationListElement">'+goneOnline[i]+ ' is now online!' + '</li>');
+    var canDisplay = false;
+    
+    if(goneOnline !== null && goneOnline.length > 0 ){
+        for(i = 0; i < goneOnline.length; i++){
+            if(goneOnline[i][1] === 0)
+                canDisplay = true;
+        }
+        if(canDisplay){
+            $('.notifications').fadeIn('slow');
+            $('.notifications').toggleClass('hidden');
+            $('.notificationListElement').remove();
+            for(i = 0; i < goneOnline.length; i++){
+                console.log('is this even doing anything');
+                if(goneOnline[i][1] === 0){
+                    $('.notificationsList').append('<li class="notificationListElement">'+goneOnline[i][0]+ ' is now online!' + '</li>');
+                }
+            }
+            setTimeout(hideNotifications, 10000);
+        }
     }
-    setTimeout(hideNotifications, 10000);
 }
 
 function hideNotifications(){
@@ -75,8 +88,25 @@ function hideNotifications(){
     $('.notifications').toggleClass('hidden');
 }
 
-function updateGoneOnline(currentStreamer){
-    goneOnline.push(currentStreamer);
+function updateGoneOnline(currentStreamer, liveStatus){
+    if(liveStatus){
+        var onList = 0;
+        for(i = 0; i < goneOnline.length; i++){
+            if(currentStreamer === goneOnline[i][0]){
+                goneOnline[i][1] = 1;
+                var onList = 1;
+            }
+        }
+        if(onList === 0){
+            goneOnline.push([currentStreamer, 0]);
+        }
+    }else{
+        for(i = 0; i < goneOnline.length; i++){
+            if(currentStreamer === goneOnline[i][0]){
+                goneOnline = goneOnline.splice(i, 1);
+            }
+        }
+    }
 }
 
 //Switches the current embed to the corresponding URL of the streamer name the user clicked.
@@ -100,10 +130,10 @@ function getStreamerStatus(apimeth, currentStreamer){
                     if(list.stream != null){
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).textContent = 'Online';
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
-                        updateGoneOnline(currentStreamer);
-                        showNotifications();
+                        updateGoneOnline(currentStreamer, 1);
                     }else{
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
+                        updateGoneOnline(currentStreamer, 0);
                     }
                 });
 }
@@ -114,7 +144,6 @@ function checkStreamerStatus(){
     var apiMethod, currentStreamer;
     
     Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
-        goneOnline = [];
         for(i = 0; i < streamerURLs.length; i++){
             currentStreamer = streamerURLs[i][0];
             if(streamerURLs[i][2] != 'non-twitch'){
@@ -124,8 +153,9 @@ function checkStreamerStatus(){
         }
     });
     $('.streamerList').fadeTo('slow', 1);
+    showNotifications();
 }
-checkStreamerStatus();
+
 
 //Adjusts width of chat and embed
 function changeWidth(newWidth){
