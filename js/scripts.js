@@ -34,10 +34,10 @@ var streamerlistitem;
 
 $(document).ready(function(){
     $('.refresh').click(function(){
-        $('ul').fadeTo('slow', 0);
-        checkStreamerStatus();
-        $('ul').fadeTo('slow', 1);
+        checkStreamerStatus()
     });
+    
+    setInterval(checkStreamerStatus, 120000);
     
     for (i = 0; i < streamerURLs.length; i++){
         if(i === 0) $('.streamerList').append('<li><h2 class="streamerListText">Sekrit Club</h2></li>');
@@ -89,6 +89,7 @@ function getStreamerStatus(apimeth, curStreamer){
 
 function checkStreamerStatus(){
     console.log("Checking streamer statuses...");
+    $('.streamerList').fadeTo('fast', 0);
     var apiMethod, currentStreamer;
     Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
         for(i = 0; i < streamerURLs.length; i++){
@@ -99,6 +100,8 @@ function checkStreamerStatus(){
             }
         }
     });
+    
+    $('.streamerList').fadeTo('slow', 1);
 }
 checkStreamerStatus();
 
