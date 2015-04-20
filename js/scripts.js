@@ -53,7 +53,7 @@ $(document).ready(function(){
     }
     
     setInterval(checkStreamerStatus, 120000);
-
+    
     $('.slide-menu-left').jScrollPane();
     checkStreamerStatus();
 });
@@ -128,9 +128,12 @@ function instantEmbed(caller) {
 function getStreamerStatus(apimeth, currentStreamer){
     Twitch.api({method: apimeth}, function(error, list) {
                     if(list.stream != null){
-                        document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).innerHTML = 'Online<br>' + '<span class="streamerStatusGame">'+list.stream.game+'</span>';
+                        if(list.stream.game !== null){
+                            document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).innerHTML = 'Online<br>' + '<span class="streamerStatusGame">'+list.stream.game+'</span>';
+                        }else{
+                            document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).innerHTML = 'Online';
+                        }
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
-                        console.log(list.stream.game);
                         updateGoneOnline(currentStreamer, 1);
                     }else{
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
@@ -153,6 +156,7 @@ function checkStreamerStatus(){
             }
         }
     });
+    $('.slide-menu-left').data('jsp').reinitialise();
     $('.streamerList').fadeTo('slow', 1);
     showNotifications();
 }
