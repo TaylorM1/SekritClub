@@ -53,9 +53,10 @@ $(document).ready(function(){
         $('.streamerList').append(streamerlistitem);
     }
     
-    setInterval(checkStreamerStatus, 120000);
+    
     
     $('.slide-menu-left').jScrollPane();
+    setInterval(checkStreamerStatus, 120000);
     checkStreamerStatus();
 });
 
@@ -104,7 +105,7 @@ function updateGoneOnline(currentStreamer, liveStatus){
     }else{
         for(i = 0; i < goneOnline.length; i++){
             if(currentStreamer === goneOnline[i][0]){
-                goneOnline = goneOnline.splice(i, 1);
+                goneOnline.splice(i, 1);
             }
         }
     }
@@ -128,7 +129,7 @@ function instantEmbed(caller) {
 
 function getStreamerStatus(apimeth, currentStreamer){
     Twitch.api({method: apimeth}, function(error, list) {
-                    if(list.stream != null){
+                    if(list.stream !== null){
                         if(list.stream.game !== null){
                             document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).innerHTML = 'Online<br>' + '<span class="streamerStatusGame">'+list.stream.game+'</span>';
                         }else{
@@ -156,12 +157,13 @@ function checkStreamerStatus(){
                 getStreamerStatus(apiMethod, currentStreamer);
             }
         }
+
     });
+    
+    showNotifications();
     $('.slide-menu-left').data('jsp').reinitialise();
     $('.streamerList').fadeTo('slow', 1);
-    showNotifications();
 }
-
 
 //Adjusts width of chat and embed
 function changeWidth(newWidth){
