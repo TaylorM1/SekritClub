@@ -1,6 +1,7 @@
 //Setting up a multidimensional array of streamers and the corresponding url for use later.
 var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['BrutalEarthworm', 'http://hitbox.tv/embed/Brutal-Earthworm', 'non-twitch'],
+    ['BrutalEarthworm on Twitch', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=brutal_earthworm&autoplay=1', 'brutal_earthworm'],
     ['JuniorTerra', 'http://hitbox.tv/embed/juniorterra', 'non-twitch'], 
     ['Thilink', 'http://hitbox.tv/embed/thilink', 'non-twitch'],
     ['Thilink on Twitch', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=thilink&autoplay=1', 'thilink'],
