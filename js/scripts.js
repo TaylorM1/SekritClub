@@ -104,7 +104,7 @@ function updateGoneOnline(currentStreamer, liveStatus){
     }else{
         for(i = 0; i < goneOnline.length; i++){
             if(currentStreamer === goneOnline[i][0]){
-                goneOnline = goneOnline.splice(i, 1);
+                goneOnline.splice(i, 1);
             }
         }
     }
