@@ -34,12 +34,28 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
 var streamerlistitem;
 var goneOnline = [];
 
+    Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
+
+    });
+
 $(document).ready(function(){
     $('.refresh').click(function(){
         checkStreamerStatus()
     });
+
     $('.notificationsX').click(hideNotifications);
     
+    
+    setInterval(checkStreamerStatus, 120000);
+    
+    $('.slide-menu-left').jScrollPane();
+    checkStreamerStatus();
+});
+
+var streamStatuses = document.querySelectorAll('.streamerStatus');
+
+function rebuildStreamerList(){
+    $('.streamerList li').remove();
     for (i = 0; i < streamerURLs.length; i++){
         if(i === 0) $('.streamerList').append('<li><h2 class="streamerListText">Sekrit Club</h2></li>');
         if(streamerURLs[i][0] === "Vinny") $('.streamerList').append('<li><h2 class="streamerListText">Vinesauce</h2></li>');
@@ -52,14 +68,7 @@ $(document).ready(function(){
         streamerlistitem += '</button></li>'
         $('.streamerList').append(streamerlistitem);
     }
-    
-    setInterval(checkStreamerStatus, 120000);
-    
-    $('.slide-menu-left').jScrollPane();
-    checkStreamerStatus();
-});
-
-var streamStatuses = document.querySelectorAll('.streamerStatus');
+}
 
 function showNotifications(){
     var canDisplay = false;
@@ -140,28 +149,25 @@ function getStreamerStatus(apimeth, currentStreamer){
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
                         updateGoneOnline(currentStreamer, 0);
                     }
+        $('.slide-menu-left').data('jsp').reinitialise();
+        showNotifications();
                 });
 }
 
 function checkStreamerStatus(){
     console.log("Checking streamer statuses...");
     $('.streamerList').fadeTo('fast', 0);
+    rebuildStreamerList();
     var apiMethod, currentStreamer;
-    
-    Twitch.init({clientId: 'o5s94jbl4vk4oygss8zv5qi0xsjwcgi'}, function(error, status) {
-        for(i = 0; i < streamerURLs.length; i++){
-            currentStreamer = streamerURLs[i][0];
-            if(streamerURLs[i][2] != 'non-twitch'){
-                apiMethod = '/streams/' + streamerURLs[i][2];
-                getStreamerStatus(apiMethod, currentStreamer);
-            }
+    for(i = 0; i < streamerURLs.length; i++){
+        currentStreamer = streamerURLs[i][0];
+        if(streamerURLs[i][2] != 'non-twitch'){
+            apiMethod = '/streams/' + streamerURLs[i][2];
+            getStreamerStatus(apiMethod, currentStreamer);
         }
-    });
-    $('.slide-menu-left').data('jsp').reinitialise();
-    $('.streamerList').fadeTo('slow', 1);
-    showNotifications();
+    }
+    $('.streamerList').delay(1000).fadeTo('slow', 1);
 }
-
 
 //Adjusts width of chat and embed
 function changeWidth(newWidth){

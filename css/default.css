@@ -121,7 +121,7 @@ input[type=submit]:active {
     float: right;
     top: 10px;
     right: 5px;
-    position: relative;
+    position: absolute;
     border-radius: 50%;
 }
 
@@ -326,6 +326,11 @@ nav.push-menu-right li {
     border-bottom: solid 1px #042e5c;
     border-top: solid 1px #72a8e4;
 }
+nav.header{
+    display: block;
+    text-align: center;
+    border-bottom: solid 1px #042e5c;
+}
 nav.slide-menu-left li:first-child,
 nav.slide-menu-right li:first-child,
 nav.push-menu-left li:first-child,
@@ -350,9 +355,10 @@ nav.slide-menu-left button.close-menu,
 nav.slide-menu-right button.close-menu,
 nav.push-menu-left button.close-menu,
 nav.push-menu-right button.close-menu {
-    margin: 10px 0;
+    margin: 10px auto;
     padding: 10px 30px;
     background-color: #0b53a3;
+    display: block;
     border: none;
     color: #fff;
     border-radius: 20px;
