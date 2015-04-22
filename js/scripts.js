@@ -48,7 +48,12 @@ $(document).ready(function(){
     
     setInterval(checkStreamerStatus, 120000);
     
-    $('.slide-menu-left').jScrollPane();
+    $('.slide-menu-left').jScrollPane(
+        {
+            autoReinitialise: true,
+            hideFocus: true,
+            verticalGutter: 0
+        });
     checkStreamerStatus();
 });
 
@@ -72,7 +77,6 @@ function rebuildStreamerList(){
 
 function showNotifications(){
     var canDisplay = false;
-    
     if(goneOnline !== null && goneOnline.length > 0 ){
         for(i = 0; i < goneOnline.length; i++){
             if(goneOnline[i][1] === 0)
@@ -143,13 +147,11 @@ function getStreamerStatus(apimeth, currentStreamer){
                         }
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
                         updateGoneOnline(currentStreamer, 1);
-                        console.log(goneOnline);
+                        showNotifications();
                     }else{
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
                         updateGoneOnline(currentStreamer, 0);
                     }
-        $('.slide-menu-left').data('jsp').reinitialise();
-        showNotifications();
                 });
 }
 

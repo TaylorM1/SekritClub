@@ -17,6 +17,15 @@ button:focus {
     outline: none;
 }
 
+.noHighlight {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 button{
     cursor: pointer;
 }
@@ -241,12 +250,7 @@ input[type='range']::-moz-range-thumb {
     box-shadow: 0 0 5px rgba(13, 106, 209, 0.8);
     color: #fff;
     border-radius: 10px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    cursor: default;
 }
 
 .notificationsX {
@@ -478,6 +482,7 @@ body.pmb-open #wrapper {
 }
 .jspTrack{
     background: #042F5E;
+    box-shadow: inset 4px 1px 16px rgba(0, 0, 0, 0.5);
 }
 
 .jspDrag{
@@ -549,12 +554,6 @@ body.pmb-open #wrapper {
     font-style: italic;
     text-decoration: none;   
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 3px 3px 10px black;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     cursor: default;
 }
 .messageBoard1{
@@ -567,12 +566,6 @@ body.pmb-open #wrapper {
     font-style: italic;
     text-decoration: none;   
     text-shadow: -1px -1px 0 #0D6AD1, 1px -1px 0 #0D6AD1, -1px 1px 0 #0D6AD1, 1px 1px 0 #0D6AD1, 3px 3px 10px black;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     cursor: default;
 }
 
