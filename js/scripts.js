@@ -83,7 +83,6 @@ function showNotifications(){
             $('.notifications').toggleClass('hidden');
             $('.notificationListElement').remove();
             for(i = 0; i < goneOnline.length; i++){
-                console.log('is this even doing anything');
                 if(goneOnline[i][1] === 0){
                     $('.notificationsList').append('<li class="notificationListElement">'+goneOnline[i][0]+ ' is now online!' + '</li>');
                 }
@@ -100,20 +99,19 @@ function hideNotifications(){
 
 function updateGoneOnline(currentStreamer, liveStatus){
     if(liveStatus){
-        var onList = 0;
         for(i = 0; i < goneOnline.length; i++){
             if(currentStreamer === goneOnline[i][0]){
                 goneOnline[i][1] = 1;
-                var onList = 1;
+                return;
             }
         }
-        if(onList === 0){
-            goneOnline.push([currentStreamer, 0]);
-        }
+        goneOnline.push([currentStreamer, 0]);
+        return;
     }else{
         for(i = 0; i < goneOnline.length; i++){
             if(currentStreamer === goneOnline[i][0]){
                 goneOnline.splice(i, 1);
+                return;
             }
         }
     }
@@ -145,6 +143,7 @@ function getStreamerStatus(apimeth, currentStreamer){
                         }
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatusACTIVE';
                         updateGoneOnline(currentStreamer, 1);
+                        console.log(goneOnline);
                     }else{
                         document.getElementById(currentStreamer.replace(/\s|['"]|/g, "")).className = 'streamerStatus';
                         updateGoneOnline(currentStreamer, 0);
