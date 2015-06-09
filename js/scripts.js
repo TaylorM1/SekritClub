@@ -29,6 +29,7 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ["Vinny's Mike", 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=m6000w&autoplay=1', 'm6000w'],
     ['Bro Team Pill', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=broteam&autoplay=1', 'broteam'],
     ['Lab Zero', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=labzero&autoplay=1', 'labzero'],
+    ['EightySixed', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=eightysixed&autoplay=1', 'eightysixed'],
     ['Mega 64', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mega64podcast&autoplay=1', 'mega64podcast']];
 
 var streamerlistitem;
@@ -214,7 +215,8 @@ document.getElementById("easyTwitchEmbed").onclick = function() {
          
 //Switches out Chatango for the backup IRC channel client
 document.getElementById('IRC').onclick = function() {
-    document.getElementById('chatango-embed').src = "http://lightirc.com/start/?host=irc.lightirc.com&autojoin=%23asekritclub&showNickSelection=true&showChannelHeader=false&showNavigation=false&showServerWindow=false&styleURL=css%2Fblack.css&nick=User_%25";
+    document.getElementById('chatango-embed').src = "https://kiwiirc.com/client/irc.kiwiirc.com/?nick=Sekrit Clu|?&theme=mini#asekritclub";
+    document.getElementById('chatango-embed').style = "border:0; width:100%; height:100%;margin-left:5px;";
 }
 
 //Switches between HTML5 Chatango and legacy flash
@@ -226,6 +228,7 @@ document.getElementById('chatSwap').onclick = function() {
          document.getElementById('chatango-embed').src = './chats/' + 'default' + '/chatroom.html';
          document.getElementById('chatango-embed').name = 'flash';
     }
+    document.getElementById('chatango-embed').style = "";
 }
 
 /** Deprecated streamer list and links menu code
