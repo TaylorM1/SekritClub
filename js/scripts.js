@@ -30,7 +30,8 @@ var streamerURLs = [['Rellow', 'http://hitbox.tv/embed/rellow', 'non-twitch'],
     ['Bro Team Pill', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=broteam&autoplay=1', 'broteam'],
     ['Lab Zero', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=labzero&autoplay=1', 'labzero'],
     ['EightySixed', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=eightysixed&autoplay=1', 'eightysixed'],
-    ['Mega 64', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mega64podcast&autoplay=1', 'mega64podcast']];
+    ['Mega 64', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=mega64podcast&autoplay=1', 'mega64podcast'],
+    ['GPM', 'http://www.twitch.tv/widgets/live_embed_player.swf?channel=geepm&autoplay=1', 'geepm']];
 
 var streamerlistitem;
 var goneOnline = [];
